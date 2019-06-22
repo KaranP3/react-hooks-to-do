@@ -5,14 +5,8 @@ const TodoListForm = ({ addTodo }) => {
   const [value, handleChange, reset] = useInputState("");
   return (
     <div>
-      {value}
       <div className="container mt-3" id="searchContainer">
-        <div
-          className="card m-4 z-depth-3 mx-auto w-50 animated slideInRight"
-          style={{
-            borderRadius: "30px"
-          }}
-        >
+        <div className="card m-4 z-depth-3 mx-auto animated slideInRight">
           <div className="card-body pt-0 pb-0">
             <div className="md-form mt-2">
               <div align="center">

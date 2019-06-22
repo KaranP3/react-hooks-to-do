@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import TodoList from "./TodoList";
 import TodoListForm from "./TodoListForm";
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
+import uuid from "uuid/v4";
 
 const ToDoApp = () => {
   const initialTodos = [
@@ -10,13 +13,40 @@ const ToDoApp = () => {
   ];
   const [todos, setTodos] = useState(initialTodos);
   const addTodo = newTodoText => {
-    setTodos([...todos, { id: 4, task: newTodoText, completed: false }]);
+    setTodos([...todos, { id: uuid(), task: newTodoText, completed: false }]);
   };
+  const removeTodo = todoId => {
+    // filter out remove to do
+    const updatedTodos = todos.filter(todo => todo.id !== todoId);
+    // call setTodos with new todos array
+    setTodos(updatedTodos);
+  };
+  const toggleTodo = todoId => {
+    const updatedTodos = todos.map(todo =>
+      todo.id === todoId ? { ...todo, completed: !todo.completed } : todo
+    );
+    setTodos(updatedTodos);
+  };
+
   return (
-    <div>
-      <TodoListForm addTodo={addTodo} />
-      <TodoList todos={todos} />
-    </div>
+    <Paper
+      style={{
+        padding: 0,
+        margin: 0,
+        height: "100vh"
+      }}
+    >
+      <Grid container justify="center">
+        <Grid item xs={11} md={8} lg={6}>
+          <TodoListForm addTodo={addTodo} />
+          <TodoList
+            todos={todos}
+            removeTodo={removeTodo}
+            toggleTodo={toggleTodo}
+          />
+        </Grid>
+      </Grid>
+    </Paper>
   );
 };
 
