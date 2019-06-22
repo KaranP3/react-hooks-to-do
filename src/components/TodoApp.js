@@ -9,9 +9,12 @@ const ToDoApp = () => {
     { id: 3, task: "Build a to-do app using React Hooks", completed: false }
   ];
   const [todos, setTodos] = useState(initialTodos);
+  const addTodo = newTodoText => {
+    setTodos([...todos, { id: 4, task: newTodoText, completed: false }]);
+  };
   return (
     <div>
-      <TodoListForm />
+      <TodoListForm addTodo={addTodo} />
       <TodoList todos={todos} />
     </div>
   );

@@ -1,8 +1,11 @@
 import React from "react";
+import useInputState from "../hooks/useInputState";
 
-const TodoListForm = () => {
+const TodoListForm = ({ addTodo }) => {
+  const [value, handleChange, reset] = useInputState("");
   return (
     <div>
+      {value}
       <div className="container mt-3" id="searchContainer">
         <div
           className="card m-4 z-depth-3 mx-auto w-50 animated slideInRight"
@@ -18,13 +21,20 @@ const TodoListForm = () => {
                   style={{ color: "lightblue", fontSize: "50px" }}
                 />
               </div>
-              <form>
+              <form
+                onSubmit={e => {
+                  e.preventDefault();
+                  addTodo(value);
+                  reset();
+                }}
+              >
                 <div align="center">
                   <input
                     type="text"
                     id="form1"
                     className="form-control  w-75"
-                    placeholder="Enter task here"
+                    onChange={handleChange}
+                    value={value}
                   />
                 </div>
                 <div align="center" className="mt-3">
