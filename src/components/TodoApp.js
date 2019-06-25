@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import useTodoState from "../hooks/useTodoState";
 import TodoList from "./TodoList";
 import TodoListForm from "./TodoListForm";
@@ -11,10 +11,6 @@ const ToDoApp = () => {
   const { todos, addTodo, removeTodo, toggleTodo, editTodo } = useTodoState(
     initialTodos
   );
-
-  useEffect(() => {
-    window.localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]);
 
   return (
     <Paper
