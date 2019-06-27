@@ -7,12 +7,6 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 
 const ToDoApp = () => {
-  // const initialTodos = JSON.parse(window.localStorage.getItem("todos") || "[]");
-
-  // const { todos, addTodo, removeTodo, toggleTodo, editTodo } = useTodoState(
-  //   initialTodos
-  // );
-
   return (
     <Paper
       style={{
