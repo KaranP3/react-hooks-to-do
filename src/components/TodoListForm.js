@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import useInputState from "../hooks/useInputState";
+import { TodosContext } from "../contexts/todos.context";
 
-const TodoListForm = ({ addTodo }) => {
+const TodoListForm = () => {
   const [value, handleChange, reset] = useInputState("");
+  const { addTodo } = useContext(TodosContext);
   return (
     <div>
       <div className="container mt-3" id="searchContainer">
