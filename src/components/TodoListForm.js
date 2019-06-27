@@ -4,7 +4,7 @@ import { TodosContext } from "../contexts/todos.context";
 
 const TodoListForm = () => {
   const [value, handleChange, reset] = useInputState("");
-  const { addTodo } = useContext(TodosContext);
+  const { dispatch } = useContext(TodosContext);
   return (
     <div>
       <div className="container mt-3" id="searchContainer">
@@ -23,7 +23,7 @@ const TodoListForm = () => {
               <form
                 onSubmit={e => {
                   e.preventDefault();
-                  addTodo(value);
+                  dispatch({ type: "ADD", task: value });
                   reset();
                 }}
               >
