@@ -1,5 +1,4 @@
 import React, { createContext, useReducer } from "react";
-import useTodoState from "../hooks/useTodoState";
 import todosReducer from "../reducers/todo.reducer";
 
 const defaultTodos = [

@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from "react";
+import React, { useContext } from "react";
 import Todo from "./Todo";
 import Paper from "@material-ui/core/Paper";
 import List from "@material-ui/core/List";
@@ -18,10 +18,10 @@ const TodoList = () => {
       >
         <List style={{ backgroundColor: "white" }}>
           {todos.map((todo, i) => (
-            <Fragment>
+            <React.Fragment key={i}>
               <Todo {...todo} key={todo.id} />
               {i < todos.length - 1 && <Divider />}
-            </Fragment>
+            </React.Fragment>
           ))}
         </List>
       </Paper>
