@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from "react";
+import React, { Fragment, useContext, memo } from "react";
 import useToggleState from "../hooks/useToggleState";
 import EditTodoForm from "./EditTodoForm";
 import ListItem from "@material-ui/core/ListItem";
@@ -15,7 +15,7 @@ const Todo = props => {
   const dispatch = useContext(DispatchContext);
   const [isEditing, toggle] = useToggleState(false);
   return (
-    <ListItem style={{ height: "64px" }}>
+    <ListItem style={{ height: "64px" }} key={id}>
       {isEditing ? (
         <EditTodoForm id={id} task={task} toggleEditForm={toggle} />
       ) : (
@@ -47,4 +47,4 @@ const Todo = props => {
   );
 };
 
-export default Todo;
+export default memo(Todo);
